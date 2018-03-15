@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'playlist2/css/style.css' %}" media="screen" title="no title">
+    <title>Index</title>
+  </head>
+
+  <body>
+
+    <div class = "header">
+      <h1 class="one_line">Hello, {{ request.session.user_first_name }}!</h1><a href={% url 'playlist1:logout' %}>Log out</a>
+    </div>
+
+    <div class = "table1">
+    <h3>All the songs in our hub:</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Artist</a></th>
+            <th>Title</th>
+            <th>No. of Times Song Has Been Added</th>
+            <th>Add to Playlist</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for song in playlist %}
+            <tr>
+              <p><td>{{ song.artist }}</td></p>
+              <p><td><a href="{% url 'playlist2:songs' song_id=song.id %}">{{ song.title }}</a></td></p>
+              <p><td>{{ song.times_added }}</td></p>
+              <p><td><a href="{% url 'playlist2:add_to_playlist' song_id=song.id %}">Add<a></td></p>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div><!-- table1 end div -->
+    <br>
+
+    <div class = "form_div">
+      <h3>Create a New Wish List Item</h3>
+      <form class="songs_form" action="{% url 'playlist2:create_song' %}" method="POST">
+        {% csrf_token %}
+        <h3>Add a Song:</h3>
+          <p>Title: <input type="text" name="title" value=""></p>
+          <p>Artist: <input type="text" name="artist" value=""></p>
+          <input type="Submit" value="Add Song">
+      </form>
+    </div>
+
+    <div class="error_messages">
+  <!-- displaying error messages -->
+        {% if messages %}
+          <ul class="messages">
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'app1_landingpage/css/style.css' %}" media="screen" title="no title">
+
+   <title>Python projects II</title>
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        function loop() {
+            $('div').css({right:0});
+            $('div').animate ({
+                right: '+=2090',
+            }, 10000, 'linear', function() {
+                loop();
+            });
+        }
+        loop();
+    });
+    </script>
+  </head>
+
+  <body>
+    <fieldset>
+    <legend>PYTHON PROJECTS II</legend>
+
+    <div class = "column">
+      <h2>Python projects by Karen S. Welch</h2>
+      <p><a href="{% url 'bright_ideas1:index' %}">Bright Ideas</a>Login/register; post your ideas and "like" ideas posted by other users</p>
+
+      <p><a href="{% url 'network1:index' %}">Network</a>Create a networking account; send and accept invitations to and from other networkers</p>
+
+      <p><a href="{% url 'playlist1:index' %}">Playlist</a>Login/register; add songs to site, add songs to your playlist, add other users' songs to your playlist</p>
+    </div>
+    <p><span style = "color: red">Visitors are invited to log in as hgranger@hogwarts.com, password: studymore</span></p>
+  </fieldset>
+
+  <div style="margin-left: 0px; position:absolute"><img src = "static/app1_landingpage/images/mypython4.jpg"></div>
+  <div id="grass">
+    <p>||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||ll||</p>
+  </div>
+
+
+</body>
+</html>

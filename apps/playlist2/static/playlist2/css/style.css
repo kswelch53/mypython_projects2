@@ -1,0 +1,46 @@
+body{
+  background: lightblue;
+  font-family: sans-serif;
+}
+
+h1{
+  font-style: italic;
+  font-weight: lighter;
+}
+
+.error_messages p{
+  color: red;
+}
+
+.header a{
+  margin-left: 20px;
+}
+
+input{
+  background-color: silver;
+  border-radius: 10px;
+}
+
+/*spaces out table columns across the wrapper width*/
+table{
+  border-collapse: collapse;
+  width: 75%;
+  text-align: center;
+}
+
+/*zebra striping for table rows*/
+tbody tr:nth-child(even){
+  background-color: lavender;
+}
+tbody tr:nth-child(odd){
+  background-color: beige;
+}
+
+td{
+  padding: 3px 0px 3px 15px;
+}
+
+/*table headings*/
+th{
+    background-color: lavender;
+}
