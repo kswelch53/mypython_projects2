@@ -12,8 +12,19 @@ def index(request):
     else:
         print("This is index function in bright_ideas2 views.py")
         all_ideas = Idea.objects.all()
+        for idea in all_ideas:
+            print("Count is:", idea.likes_idea.count())
+            idea_count = idea.likes_idea.count()
+            if idea_count == 1:
+                str_people = "person"
+                str_likes = "likes"
+            else:
+                str_people = "people"
+                str_likes = "like"
         context = {
             'all_ideas': all_ideas,
+            'str_people': str_people,
+            'str_likes': str_likes,
         }
         return render(request, 'bright_ideas2/index.html', context)
 

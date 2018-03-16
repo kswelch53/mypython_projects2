@@ -18,22 +18,21 @@
     <form class="this_form" action="{% url 'bright_ideas2:create_idea' %}" method="POST">
       {% csrf_token %}
         <textarea name = "post" placeholder = "Post your idea here..." rows="1" cols="40%"></textarea>
-        <input type="Submit" value="Idea!">
+        <input type="Submit" value="Post idea!">
     </form>
   </div>
 
   <div class="ideabox">
     {% for idea in all_ideas %}
       <p><a href="{% url 'bright_ideas2:users' user_id=idea.adds_idea.id %}">{{ idea.adds_idea.name }}</a> says:<fieldset>{{ idea.post }}</fieldset></p>
-      <p><a href="{% url 'bright_ideas2:like_idea' post_id=idea.id %}">Like</a><a href="{% url 'bright_ideas2:all_likes' post_id=idea.id %}">{{ idea.likes_idea.count }} people</a> like this</p>
+      <p><a href="{% url 'bright_ideas2:like_idea' post_id=idea.id %}">Like</a><a href="{% url 'bright_ideas2:all_likes' post_id=idea.id %}">{{ idea.likes_idea.count }}  {{ str_people }}</a> {{ str_likes }} this</p>
 
       {% if idea.adds_idea.id == request.session.user_id %}
         <p><a href="{% url 'bright_ideas2:delete_post' post_id=idea.id %}">Delete this Post</a></p>
       {% endif %}
+      <h6>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</h6>
     {% endfor %}
   </div>
-
-    <a href={% url 'app1:index' %}>Home page</a>
 
   </body>
 </html>
